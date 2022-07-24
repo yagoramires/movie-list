@@ -30,6 +30,66 @@ main {
     font-weight: 700;
 }
 
+.details-button-container {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+.details-button {
+    cursor: pointer;
+    border: none;
+    position: relative;
+    padding: 1rem 0;
+    width: 200px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #2C2C2C;
+}
+
+.details-button::before {
+    content: '';
+    position: absolute;
+    width: 700px;
+    height: 700%;
+    background-image: linear-gradient(160deg, #0FEFFD 0%, #FF00F5 100%);
+    animation: rotate 4s linear infinite;
+}
+
+.details-button::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background-color: #1b1b1b;
+    border-radius: 1rem;
+}
+
+.details-button p {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    z-index: 20;
+    background-color: transparent;
+    text-transform: uppercase;
+
+    background: -webkit-linear-gradient(290deg,
+            #FF00F5 0%,
+
+            #0FEFFD 100%) !important;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 .details-list {
     padding: 1rem;
 

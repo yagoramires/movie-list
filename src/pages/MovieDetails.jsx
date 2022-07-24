@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { MdAddCircle } from 'react-icons/md';
+
 import MovieService from '../api/MovieService';
 
 import './details.css';
@@ -32,6 +34,14 @@ const MovieDetails = () => {
           alt={movie.title}
           className='details-image'
         />
+        <div className='details-button-container'>
+          <button className='details-button'>
+            <MdAddCircle style={{ color: '#FF00F5' }} size={15} />
+            <p>
+              <span>+</span> Add Favorite
+            </p>
+          </button>
+        </div>
         <span className='details-title'>{movie.title}</span>
       </div>
 
