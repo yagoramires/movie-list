@@ -7,6 +7,8 @@ export const ContextProvider = ({ children }) => {
   const [popular, setPopular] = useState([]);
   const [latest, setLatest] = useState([]);
   const [topSeries, setTopSeries] = useState([]);
+  const [searchInput, setSearchInput] = useState();
+  const [results, setResults] = useState('');
 
   const getPopularMovies = async () => {
     const {
@@ -44,6 +46,10 @@ export const ContextProvider = ({ children }) => {
         popular,
         latest,
         topSeries,
+        searchInput,
+        setSearchInput,
+        results,
+        setResults,
       }}
     >
       {children}
