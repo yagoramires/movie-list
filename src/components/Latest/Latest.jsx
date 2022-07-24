@@ -43,7 +43,7 @@ const Latest = () => {
       >
         {latest.map((movie, index) => (
           <SwiperSlide key={index} className='latest-slide'>
-            <Link to={`details/${movie.id}`}>
+            <Link to={`movie-details/${movie.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
                 alt={movie.title}

@@ -32,7 +32,10 @@ const Trending = () => {
               <span>{movie.vote_average.toFixed(1)}</span>
               <span>{movie.title}</span>
               <span>{movie.overview}</span>
-              <Link to={`/details/${movie.id}`} className='trending-button'>
+              <Link
+                to={`movie-details/${movie.id}`}
+                className='trending-button'
+              >
                 <span>Details</span>
               </Link>
             </div>

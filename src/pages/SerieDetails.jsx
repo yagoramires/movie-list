@@ -7,6 +7,7 @@ import MovieService from '../api/MovieService';
 const SerieDetails = () => {
   const [serie, setSerie] = useState({});
   const [genres, setGenres] = useState();
+  const [rate, setRate] = useState();
 
   const params = useParams();
 
@@ -14,6 +15,7 @@ const SerieDetails = () => {
     const { data } = await MovieService.getSerieDetail(params.id);
     setSerie(data);
     setGenres(data.genres);
+    setRate(data.vote_average);
   };
 
   useEffect(() => {
@@ -21,35 +23,29 @@ const SerieDetails = () => {
   }, []);
 
   return (
-    <main>
-      <div className=''>
-        <div className=''>
-          <img
-            src={`https://image.tmdb.org/t/p/w1280${serie.poster_path}`}
-            alt=''
-          />
-        </div>
-        <div className=''>
-          <h1>{serie.title}</h1>
-        </div>
+    <main className='details-section'>
+      <div className='details-container'>
+        <img
+          src={`https://image.tmdb.org/t/p/w1280${serie.backdrop_path}`}
+          alt={serie.title}
+          className='details-image'
+        />
+        <span className='details-title'>{serie.title}</span>
       </div>
-      <div className=''>
-        <div className=''>
-          <ul>
-            <li>
-              {genres
-                ? genres.length > 1
-                  ? `Genres: ${genres.map((genre) => ` ${genre.name}`)}`
-                  : `Genre: ${genres.map((genre) => ` ${genre.name}`)}`
-                : ''}
-            </li>
-            <li>Release Date: {serie.release_date}</li>
-            <li>Original language: {serie.original_language}</li>
-            <li>Popularity: {serie.popularity}</li>
-            <li>Overview: {serie.overview}</li>
-          </ul>
-        </div>
-      </div>
+
+      <ul className='details-list'>
+        <li>
+          {genres
+            ? genres.length > 1
+              ? `Genres: ${genres.map((genre) => ` ${genre.name}`)}`
+              : `Genre: ${genres.map((genre) => ` ${genre.name}`)}`
+            : ''}
+        </li>
+        <li>Release Date: {serie.release_date}</li>
+        <li>Original language: {serie.original_language}</li>
+        <li>Rate: {rate ? rate.toFixed(2) : ''}</li>
+        <li>Overview: {serie.overview}</li>
+      </ul>
     </main>
   );
 };
