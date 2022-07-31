@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import MovieService from '../api/MovieService';
 import { useStateContext } from '../contexts/ContextProvider';
 
@@ -39,28 +40,41 @@ const Favorites = () => {
 
   return (
     <section className='favorites'>
-      {favoritesArr
-        ? favoritesArr.map((movie, i) => {
-            return (
-              <div key={i} className='favorites__container'>
-                <img
-                  src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-                  alt='movie'
-                  className='favorites__image'
-                />
-                <div>
-                  <p className='favorites__title'>{movie.title}</p>
-                  <button
-                    className='favorites__button'
-                    onClick={() => handleRemove(movie.id)}
-                  >
-                    Remove
-                  </button>
-                </div>
+      <h1
+        className='section-title'
+        style={{ padding: '1rem 0', borderBottom: '1px solid #FF00F5' }}
+      >
+        Favorites
+      </h1>
+      {favoritesArr ? (
+        favoritesArr.map((movie, i) => {
+          return (
+            <div key={i} className='favorites__container'>
+              <img
+                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+                alt='movie'
+                className='favorites__image'
+              />
+              <div>
+                <Link
+                  to={`/movie-details/${movie.id}`}
+                  className='favorites__title'
+                >
+                  {movie.title}
+                </Link>
+                <button
+                  className='favorites__button'
+                  onClick={() => handleRemove(movie.id)}
+                >
+                  Remove
+                </button>
               </div>
-            );
-          })
-        : ''}
+            </div>
+          );
+        })
+      ) : (
+        <div className='no-fav'>No favorites selected</div>
+      )}
     </section>
   );
 };

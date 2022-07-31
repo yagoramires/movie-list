@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState();
   const [rate, setRate] = useState();
+  const [remove, setRemove] = useState(false);
 
   const { favorites, setFavorites } = useStateContext();
 
@@ -32,6 +33,30 @@ const MovieDetails = () => {
     favorites ? setFavorites(favoritesArr) : setFavorites([movie]);
   };
 
+  const handleRemove = (movieID) => {
+    let newFavorites = favorites.filter((favorite) => {
+      return favorite !== movieID;
+    });
+
+    setFavorites(newFavorites);
+  };
+
+  useEffect(() => {
+    let removeFav = favorites.filter((favorite) => {
+      return favorite === movie.id;
+    });
+
+    removeFav.length > 0 ? setRemove(true) : setRemove(false);
+  });
+
+  // useEffect(() => {
+  //   let removeFav = favorites.filter((favorite) => {
+  //     return favorite === movie.id;
+  //   });
+
+  //   removeFav.length > 0 ? setRemove(true) : setRemove(false);
+  // }, []);
+
   useEffect(() => {
     getMovie();
   }, []);
@@ -45,15 +70,27 @@ const MovieDetails = () => {
           className='details-image'
         />
         <div className='details-button-container'>
-          <button
-            className='details-button'
-            onClick={() => handleFavorite(movie.id)}
-          >
-            <MdAddCircle style={{ color: '#FF00F5' }} size={15} />
-            <p>
-              <span>+</span> Add Favorite
-            </p>
-          </button>
+          {remove ? (
+            <button
+              className='details-button'
+              onClick={() => handleRemove(movie.id)}
+            >
+              <MdAddCircle style={{ color: '#FF00F5' }} size={15} />
+              <p>
+                <span>-</span> Remove Favorite
+              </p>
+            </button>
+          ) : (
+            <button
+              className='details-button'
+              onClick={() => handleFavorite(movie.id)}
+            >
+              <MdAddCircle style={{ color: '#FF00F5' }} size={15} />
+              <p>
+                <span>+</span> Add Favorite
+              </p>
+            </button>
+          )}
         </div>
         <span className='details-title'>{movie.title}</span>
       </div>

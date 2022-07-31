@@ -5,13 +5,13 @@
 <h2> Requirements: </h2>
 <ul>
     <li> Build a Web App using <b><i>ReactJS</i></b></li>
-    <li> Fetch your data from <a href="https://api.themoviedb.org/3/">The Movie DB</a>, an Api for movies data</li>
+    <li> Fetch your data from <a href="https://api.themoviedb.org/3/">The Movie DB</a>, an Api for movies and series data</li>
     <li> Show that data on a Web App, who allows you to: 
         <ol>
-            <li>Click in a movie to see details</li>
-            <li>Search Movies</li>
+            <li>Click on a movie to see details</li>
+            <li>Search movies</li>
             <li>Add movies to favorites</li>
-            <li>See a list of favorite movies</li>
+            <li>See a list of favorites movies</li>
         </ol>
     </li>
 </ul>

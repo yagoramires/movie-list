@@ -19,6 +19,7 @@ main {
 .details-image {
     position: absolute;
     width: 100%;
+    height: calc(100% + 2rem);
     bottom: -2rem;
 }
 

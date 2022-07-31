@@ -24,6 +24,7 @@
     font-weight: 500;
     color: #fff;
     transition: all .5s;
+    text-decoration: none;
 }
 
 .favorites__button {
@@ -34,9 +35,15 @@
 }
 
 .favorites__title:hover {
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #FF00F5;
     cursor: pointer;
+}
+
+.no-fav {
+    color: #fff;
+    padding: 1rem 0;
+    font-size: 2rem;
 }
 
 @media (max-width: 768px) {
