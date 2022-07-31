@@ -24,16 +24,21 @@
 }
 
 .searchResults {
+    display: none;
+}
+
+.searchResults.active {
     position: absolute;
     top: 5rem;
     left: 0;
     z-index: 100;
     width: 100%;
     display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 1);
+    min-height: calc(100vh - 5rem);
 }
 
 .searchResults a {
@@ -52,5 +57,34 @@
 .searchResults a:hover {
     color: #FF00F5;
     background-color: #1b1b1b;
+
+}
+
+@media (max-width:768px) {
+    .header {
+        flex-direction: column;
+        height: 9rem;
+        overflow-x: hidden;
+
+    }
+
+    .header-input {
+        width: 70%;
+    }
+
+    .header-container a {
+        order: 2;
+
+    }
+
+    .searchResults.active {
+        top: 9rem;
+    }
+
+    .searchResults a {
+        text-align: left;
+        padding: .25rem 1rem;
+        font-weight: 600;
+    }
 
 }

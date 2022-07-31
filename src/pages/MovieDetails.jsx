@@ -7,11 +7,14 @@ import { MdAddCircle } from 'react-icons/md';
 import MovieService from '../api/MovieService';
 
 import './details.css';
+import { useStateContext } from '../contexts/ContextProvider';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState();
   const [rate, setRate] = useState();
+
+  const { favorites, setFavorites } = useStateContext();
 
   const params = useParams();
 
@@ -20,6 +23,13 @@ const MovieDetails = () => {
     setMovie(data);
     setGenres(data.genres);
     setRate(data.vote_average);
+  };
+
+  const handleFavorite = (movie) => {
+    let favoritesArr = [...favorites];
+    if (favoritesArr.includes(movie)) return;
+    favoritesArr.push(movie);
+    favorites ? setFavorites(favoritesArr) : setFavorites([movie]);
   };
 
   useEffect(() => {
@@ -35,7 +45,10 @@ const MovieDetails = () => {
           className='details-image'
         />
         <div className='details-button-container'>
-          <button className='details-button'>
+          <button
+            className='details-button'
+            onClick={() => handleFavorite(movie.id)}
+          >
             <MdAddCircle style={{ color: '#FF00F5' }} size={15} />
             <p>
               <span>+</span> Add Favorite
@@ -47,16 +60,23 @@ const MovieDetails = () => {
 
       <ul className='details-list'>
         <li>
-          {genres
-            ? genres.length > 1
-              ? `Genres: ${genres.map((genre) => ` ${genre.name}`)}`
-              : `Genre: ${genres.map((genre) => ` ${genre.name}`)}`
-            : ''}
+          <span>
+            {genres ? (genres.length > 1 ? 'Genres: ' : 'Genre: ') : ''}
+          </span>
+          {genres ? genres.map((genre) => ` ${genre.name} |`) : ''}
         </li>
-        <li>Release Date: {movie.release_date}</li>
-        <li>Original language: {movie.original_language}</li>
-        <li>Rate: {rate ? rate.toFixed(2) : ''}</li>
-        <li>Overview: {movie.overview}</li>
+        <li>
+          <span>Release Date:</span> {movie.release_date}
+        </li>
+        <li>
+          <span>Original language:</span> {movie.original_language}
+        </li>
+        <li>
+          <span>Rate:</span> {rate ? rate.toFixed(2) : ''}
+        </li>
+        <li>
+          <span>Overview:</span> {movie.overview}
+        </li>
       </ul>
     </main>
   );

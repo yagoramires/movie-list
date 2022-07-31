@@ -6,6 +6,7 @@ import MovieDetails from './pages/MovieDetails';
 
 import './App.css';
 import SerieDetails from './pages/SerieDetails';
+import Favorites from './pages/Favorites';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/favorites' element={<Favorites />} />
         <Route path='movie-details'>
           <Route path=':id' element={<MovieDetails />} />
         </Route>

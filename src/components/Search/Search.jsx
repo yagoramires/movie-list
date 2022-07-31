@@ -6,8 +6,14 @@ import MovieService from '../../api/MovieService';
 import { Link } from 'react-router-dom';
 
 const Search = ({ classname, placeholder }) => {
-  const { searchInput, setSearchInput, results, setResults } =
-    useStateContext();
+  const {
+    searchInput,
+    setSearchInput,
+    results,
+    setResults,
+    activeSearch,
+    setActiveSearch,
+  } = useStateContext();
 
   const searchMovies = async () => {
     const {
@@ -27,9 +33,10 @@ const Search = ({ classname, placeholder }) => {
         onChange={(e) => {
           setSearchInput(e.target.value);
           searchMovies();
+          setActiveSearch(true);
         }}
       />
-      <div className='searchResults'>
+      <div className={`searchResults ${activeSearch ? 'active' : ''}`}>
         {results
           ? results.map((result, i) => {
               return (
@@ -39,6 +46,7 @@ const Search = ({ classname, placeholder }) => {
                   onClick={() => {
                     setResults('');
                     setSearchInput('');
+                    // setActiveSearch(false);
                   }}
                 >
                   {result.title}

@@ -1,0 +1,61 @@
+.favorites__container {
+    width: 100%;
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid #FF00F5;
+}
+
+.favorites__container div {
+    width: calc(100% - 100px);
+    padding: 0 2rem;
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.favorites__image {
+    height: 100px;
+    width: 100px;
+}
+
+.favorites__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    transition: all .5s;
+}
+
+.favorites__button {
+    border: none;
+    color: #FF00F5;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.favorites__title:hover {
+    font-size: 2rem;
+    color: #FF00F5;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .favorites__container {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .favorites__container div {
+        padding: 0;
+        padding-left: 1rem;
+    }
+
+    .favorites__title {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .favorites__title:hover {
+        font-size: 1.5rem;
+    }
+}

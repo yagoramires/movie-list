@@ -91,7 +91,7 @@ main {
 }
 
 .details-list {
-    padding: 1rem;
+    padding: 2rem;
 
     display: flex;
     justify-content: center;
@@ -102,5 +102,41 @@ main {
     max-width: 80%;
     text-align: justify;
     letter-spacing: 1px;
-    font-weight: 500;
+}
+
+.details-list li span {
+    font-weight: 700;
+
+}
+
+@media (max-width: 768px) {
+    .details-container {
+        height: 30vh;
+    }
+
+    .details-image {
+        height: 30vh;
+        bottom: 0;
+    }
+
+    .details-title {
+        position: absolute;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .details-button-container {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .details-button {
+        padding: 1rem;
+        width: 150px;
+        font-weight: 600;
+    }
+
+    .details-list {
+        max-width: 100%;
+    }
 }

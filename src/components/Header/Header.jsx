@@ -4,10 +4,13 @@ import { MdFavorite } from 'react-icons/md';
 
 import './header.css';
 import Search from '../Search/Search';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 const Header = () => {
+  const { setActiveSearch } = useStateContext();
+
   return (
-    <header className='header'>
+    <header className='header' onClick={() => setActiveSearch(false)}>
       <Link to='/' className='logo'>
         MOVIESDB
       </Link>

@@ -11,7 +11,7 @@ const SerieDetails = () => {
 
   const params = useParams();
 
-  const getMovie = async () => {
+  const getSerie = async () => {
     const { data } = await MovieService.getSerieDetail(params.id);
     setSerie(data);
     setGenres(data.genres);
@@ -19,7 +19,7 @@ const SerieDetails = () => {
   };
 
   useEffect(() => {
-    getMovie();
+    getSerie();
   }, []);
 
   return (

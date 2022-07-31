@@ -2,7 +2,7 @@
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 1);
     height: 40rem;
     width: 100%;
-
+    cursor: pointer;
     margin-bottom: 2rem;
 }
 
@@ -113,4 +113,23 @@
     100% {
         transform: rotate(350deg);
     }
+}
+
+@media (max-width:768px) {
+    .trending-container {
+        height: 20rem;
+        margin-bottom: 2rem;
+    }
+
+    .trending-info span:nth-of-type(3) {
+        display: none;
+    }
+
+    .trending-poster {
+        /* width: 54rem; */
+        width: 35rem;
+        height: 20rem;
+    }
+
+
 }

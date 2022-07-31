@@ -9,6 +9,8 @@ export const ContextProvider = ({ children }) => {
   const [topSeries, setTopSeries] = useState([]);
   const [searchInput, setSearchInput] = useState();
   const [results, setResults] = useState('');
+  const [favorites, setFavorites] = useState([]);
+  const [activeSearch, setActiveSearch] = useState(false);
 
   const getPopularMovies = async () => {
     const {
@@ -35,10 +37,16 @@ export const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    const data = localStorage.getItem('movies');
+    if (data !== null) setFavorites(JSON.parse(data));
     getPopularMovies();
     getLatestMovies();
     getTvShows();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('movies', JSON.stringify(favorites));
+  }, [favorites]);
 
   return (
     <StateContext.Provider
@@ -50,6 +58,10 @@ export const ContextProvider = ({ children }) => {
         setSearchInput,
         results,
         setResults,
+        setFavorites,
+        favorites,
+        setActiveSearch,
+        activeSearch,
       }}
     >
       {children}
