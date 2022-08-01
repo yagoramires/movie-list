@@ -1,4 +1,4 @@
-<h1 > MOVIES DB </h1>
+<h1 > <a href="https://moviesdb-yago.vercel.app/" target="_blank"> MOVIES DB </a> </h1>
 
 <p align="center">
 <img src="./src/assets/readme.gif" title="App demo" alt='App demo' />
