@@ -1,5 +1,9 @@
 <h1 > MOVIES DB </h1>
 
+<p align="center">
+<img src="./src/assets/readme.gif" title="App demo" alt='App demo' />
+</p>
+
 <p>In this code challenge i built an Web App which consults an API to retrieve a Movies data to show details of a movie for users.</p>
 
 <h2> Requirements: </h2>
@@ -15,10 +19,6 @@
         </ol>
     </li>
 </ul>
-
-<p align="center">
-<img src="./src/assets/readme.gif" title="App demo" alt='App demo' />
-</p>
 
 <h1> Testing this app </h1>
 
